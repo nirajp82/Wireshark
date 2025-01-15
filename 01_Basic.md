@@ -78,12 +78,13 @@ Wireshark supports two types of filters:
 
 | **Capturing Mode**   | **Description**                                                              | **Use Case**                                                                                       |
 |----------------------|------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
-| **Promiscuous Mode**  | Captures all packets visible to the NIC, regardless of destination.          | General network monitoring and troubleshooting.                                                   |
-| **Monitor Mode**      | Wireless network mode that captures all Wi-Fi traffic in range.              | Wireless network analysis, detecting interference, or capturing wireless traffic.                 |
-| **Normal Mode**       | Captures only packets addressed to your machine.                             | Simple, efficient captures when only interested in traffic to/from your device.                   |
-| **Capture Filter Mode** | Filters traffic at the capture level (before capture).                     | Useful for focusing on specific traffic (e.g., by protocol, port, or IP address).                 |
-| **Ring Buffer Mode**  | Uses a circular buffer to store captures, overwriting old files when full.   | Long-term captures, especially when disk space is limited.                                         |
-| **File Capture Mode** | Saves captures to a file for later analysis.                                | Capturing data over time for later review, or when network analysis is required after the fact.    |
+| **Promiscuous Mode**  | Promiscuous mode is the default capturing mode in Wireshark. In this mode, the network interface card (NIC) captures all packets it sees on the network, regardless of whether they are addressed to your machine.
+.          | General network monitoring and troubleshooting.                                                   |
+| **Monitor Mode**      | Monitor mode applies specifically to wireless (Wi-Fi) networks. It allows Wireshark to capture all wireless packets in the air, not just those that are directed to the capturing machine. This mode is available on Wi-Fi interfaces and is unique to wireless networks. | Wireless network analysis, detecting interference, or capturing wireless traffic.                 |
+| **Normal Mode**       | Normal mode (also referred to as **Non-Promiscuous mode**) is the default setting on most network interfaces where your NIC will only capture packets that are specifically addressed to your machine. | Simple, efficient captures when only interested in traffic to/from your device.                   |
+| **Capture Filter Mode** | While not a “mode” per se, capture filters allow users to define which traffic is captured. This is useful when you are only interested in capturing specific types of traffic (e.g., HTTP, TCP traffic, or traffic from a particular IP address).| Useful for focusing on specific traffic (e.g., by protocol, port, or IP address).                 |
+| **Ring Buffer Mode**  | Ring buffer mode helps manage disk space by allowing you to configure a circular buffer of capture files. Once the buffer is full, the oldest file is overwritten with new data..   | Long-term captures, especially when disk space is limited.                                         |
+| **File Capture Mode** |This mode allows you to capture packets into a file rather than displaying them in real-time. The capture file can later be analyzed at a different time. | Capturing data over time for later review, or when network analysis is required after the fact.    |
 
 
 ---
