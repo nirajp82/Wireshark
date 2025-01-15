@@ -42,7 +42,7 @@ Logical operators in Wireshark display filters allow you to combine multiple con
 | **Operator**       | **Description**                          | **Example**                                                                                   | 
 |--------------------|------------------------------------------|-----------------------------------------------------------------------------------------------|
 | **and** or **&&**   | **Logical AND**                          | All the conditions should match. Example: `ip.src == 192.168.1.1 and tcp.port == 80`         |
-| **or** or *    | **Logical OR**                           | Either all or one of the conditions should match. Example: `ip.src == 192.168.1.1 or tcp.port == 443` |
+| **or** or **\|\|**    | **Logical OR**                           | Either all or one of the conditions should match. Example: `ip.src == 192.168.1.1 or tcp.port == 443` |
 | **xor** or **^^**   | **Logical XOR (Exclusive OR)**           | Exclusive alterations - only one of the two conditions should match, not both. Example: `ip.src == 192.168.1.1 xor ip.dst == 192.168.1.2` |
 | **not** or **!**    | **Negation**                             | Inverts the condition. Example: `not ip.addr == 192.168.1.1` (show packets not from this IP) |
 | **[n]** or **[...]**| **Substring operator**                   | Filters for specific words or text within the packet. Example: `http contains "GET"`              |
