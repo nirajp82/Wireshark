@@ -51,16 +51,25 @@ Logical operators in Wireshark display filters allow you to combine multiple con
 
 ## Filtering Packets (Display Filters)
 
-Display filters in Wireshark are used to selectively show packets based on various conditions. Below are common filter operators with examples:
-
-| **Operator**       | **Description**                           | **Example**                                |**Description**                                                                          |
+| **Operator**       | **Description**                           | **Example**                                | **Explanation**                                                                          |
 |--------------------|-------------------------------------------|--------------------------------------------|-----------------------------------------------------------------------------------------|
-| **eq** or **==**   | **Equal**                                 | `ip.dst == 192.168.1.1`                    | This filter will show packets where the destination IP address is exactly `192.168.1.1`.|
-| **ne** or **!=**   | **Not equal**                             | `ip.dst != 192.168.1.1`                    | This filter will exclude packets where the destination IP address is 192.168.1.1.|
-| **gt** or **>**    | **Greater than**                          | `frame.len > 10`                           | This filter will show packets where the frame length is greater than 10 bytes.  |
-| **lt** or **<**    | **Less than**                             | `frame.len < 10`                           | This filter will show packets where the frame length is less than 10 bytes.|
-| **ge** or **>=**   | **Greater than or equal**                 | `frame.len >= 10`                          | This filter will show packets with frame lengths greater than or equal to 10 bytes.|
-| **le** or **<=**   | **Less than or equal**                    | `frame.len <= 10`                          | This filter will show packets with frame lengths less than or equal to 10 bytes.|
+| **eq** or **==**   | **Equal**                                 | `ip.dst == 192.168.1.1`                    | This filter will show packets where the destination IP address is exactly `192.168.1.1`. |
+| **ne** or **!=**   | **Not equal**                             | `ip.dst != 192.168.1.1`                    | This filter will exclude packets where the destination IP address is `192.168.1.1`.     |
+| **gt** or **>**    | **Greater than**                          | `frame.len > 10`                           | This filter will show packets where the frame length is greater than 10 bytes.           |
+| **lt** or **<**    | **Less than**                             | `frame.len < 10`                           | This filter will show packets where the frame length is less than 10 bytes.             |
+| **ge** or **>=**   | **Greater than or equal**                 | `frame.len >= 10`                          | This filter will show packets with frame lengths greater than or equal to 10 bytes.      |
+| **le** or **<=**   | **Less than or equal**                    | `frame.len <= 10`                          | This filter will show packets with frame lengths less than or equal to 10 bytes.         |
+| **matches**        | **Regular Expression Match**              | `http.host matches "example.com"`          | This filter will show packets where the `http.host` field matches a regular expression.   |
+| **contains**       | **Contains**                              | `data.data contains "example"`             | This filter will show packets that contain the word "example" in the data portion.       |
+| **in**             | **In List**                               | `tcp.port in {80 443}`                     | This filter will show packets where the TCP port is either 80 or 443.                    |
+| **and**            | **Logical AND**                           | `ip.src == 192.168.1.1 && tcp.port == 80`  | This filter will show packets where the source IP is `192.168.1.1` and TCP port is `80`. |
+| **or**             | **Logical OR**                            | `tcp.port == 80 || udp.port == 53`         | This filter will show packets with either TCP port 80 or UDP port 53.                    |
+| **not**            | **Logical NOT**                           | `not ip.src == 192.168.1.1`                | This filter will exclude packets with the source IP address `192.168.1.1`.               |
+| **ispresent**      | **Field Exists**                          | `http.host ispresent`                      | This filter will show packets where the `http.host` field is present (not empty).        |
+| **isnull**         | **Field is NULL**                         | `tcp.analysis.flags isnull`                | This filter will show packets where the `tcp.analysis.flags` field is NULL.              |
+| **==**             | **Exact match (alternative)**             | `tcp.seq == 1000`                          | Shows packets where the TCP sequence number is exactly `1000`.                          |
+| **!=**             | **Not equal (alternative)**               | `ip.addr != 192.168.1.1`                   | Shows packets where the IP address is not `192.168.1.1`.                                |
+| **ip.addr**        | **Match Source or Destination IP**        | `ip.addr == 192.168.1.1`                   | Matches packets with either source or destination IP equal to `192.168.1.1`.             |
 
 
 ## Filter Types
@@ -99,24 +108,18 @@ Wireshark supports two types of filters:
 ---
 
 ## Capture and Display Filter Syntax
+- **Capture filters** are for limiting what is captured, using simple expressions.
+- **Display filters** are for narrowing down results after the capture, using more complex expressions.
 
-Understanding the syntax for capture and display filters is crucial for narrowing down packets of interest. Below are examples of filter syntax for both capture and display filters:
-
-### Capture Filter Syntax
-
-Capture filters are used to capture only the packets that meet specific conditions. They are applied before data is captured.
-
-| **Syntax**                     | **Protocol**   | **Direction**   | **Hosts**             | **Value**         | **Logical Operator** | **Expressions**           |
-|---------------------------------|----------------|-----------------|-----------------------|-------------------|----------------------|---------------------------|
-| **Example**                    | `tcp`          | `src`           | `192.168.1.1`         | `80`              | `and`                | `tcp dst 202.164.30.1`    |
-
-### Display Filter Syntax
-
-Display filters are applied after data is captured, allowing you to refine your packet display.
-
-| **Syntax**                     | **Protocol**   | **String 1**   | **String 2**  | **Comparison Operator** | **Value**         | **Logical Operator** | **Expressions**           |
-|---------------------------------|----------------|----------------|---------------|-------------------------|-------------------|----------------------|---------------------------|
-| **Example**                    | `http`          | `dest`         | `ip`           | `==`                    | `192.168.1.1`     | `and`                | `tcp port`                |
+| **Filter Type**        | **Example**                     | **Explanation**                                   |
+|------------------------|---------------------------------|---------------------------------------------------|
+| **Capture Filter**      | `host 192.168.1.1`              | Capture packets to/from IP 192.168.1.1.           |
+| **Capture Filter**      | `tcp port 80`                   | Capture TCP packets on port 80.                   |
+| **Capture Filter**      | `udp`                            | Capture all UDP packets.                          |
+| **Display Filter**      | `ip.addr == 192.168.1.1`        | Display packets where the IP address is 192.168.1.1.|
+| **Display Filter**      | `tcp.port == 80`                | Display packets with TCP port 80.                 |
+| **Display Filter**      | `http`                           | Display only HTTP packets.                        |
+| **Display Filter**      | `ip.src == 192.168.1.1`         | Display packets where the source is 192.168.1.1.  |
 
 
 ---
