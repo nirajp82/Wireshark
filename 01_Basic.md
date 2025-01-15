@@ -11,11 +11,11 @@
 5. [Wireshark Capturing Modes](#wireshark-capturing-modes)
 6. [Miscellaneous Features](#miscellaneous)
 7. [Capture and Display Filter Syntax](#capture-and-display-filter-syntax)
-8. [Keyboard Shortcuts - Main Display Window](#keyboard-shortcuts---main-display-window)
-9. [Protocols - Values](#protocols---values)
-10. [Common Filtering Commands](#common-filtering-commands)
-11. [Special Operators](#Special-Operators)
-12. [Wireshark Packet Analysis - Filters and Answers](#wireshark-packet-analysis---filters-and-answers)
+8. [Protocols - Values](#protocols---values)
+9. [Common Filtering Commands](#common-filtering-commands)
+10. [Special Operators](#Special-Operators)
+11. [Wireshark Packet Analysis - Filters and Answers](#wireshark-packet-analysis---filters-and-answers)
+12. [Keyboard Shortcuts - Main Display Window](#keyboard-shortcuts---main-display-window)
 
 
 ## Default Columns in a Packet Capture Output
@@ -76,12 +76,15 @@ Wireshark supports two types of filters:
 
 ## Wireshark Capturing Modes
 
-Wireshark can be configured to capture packets in different modes, depending on the network interface.
+| **Capturing Mode**   | **Description**                                                              | **Use Case**                                                                                       |
+|----------------------|------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| **Promiscuous Mode**  | Captures all packets visible to the NIC, regardless of destination.          | General network monitoring and troubleshooting.                                                   |
+| **Monitor Mode**      | Wireless network mode that captures all Wi-Fi traffic in range.              | Wireless network analysis, detecting interference, or capturing wireless traffic.                 |
+| **Normal Mode**       | Captures only packets addressed to your machine.                             | Simple, efficient captures when only interested in traffic to/from your device.                   |
+| **Capture Filter Mode** | Filters traffic at the capture level (before capture).                     | Useful for focusing on specific traffic (e.g., by protocol, port, or IP address).                 |
+| **Ring Buffer Mode**  | Uses a circular buffer to store captures, overwriting old files when full.   | Long-term captures, especially when disk space is limited.                                         |
+| **File Capture Mode** | Saves captures to a file for later analysis.                                | Capturing data over time for later review, or when network analysis is required after the fact.    |
 
-| **Name**            | **Description**                                                                 |
-|---------------------|---------------------------------------------------------------------------------|
-| **Promiscuous mode**| Configures the network interface to capture all packets on the network segment to which it is connected. |
-| **Monitor mode**    | Enables wireless interfaces (only on Unix/Linux systems) to capture all traffic that the interface can receive, including traffic not directed to the capturing device. |
 
 ---
 
@@ -115,27 +118,6 @@ Display filters are applied after data is captured, allowing you to refine your 
 |---------------------------------|----------------|----------------|---------------|-------------------------|-------------------|----------------------|---------------------------|
 | **Example**                    | `http`          | `dest`         | `ip`           | `==`                    | `192.168.1.1`     | `and`                | `tcp port`                |
 
----
-
-## Keyboard Shortcuts - Main Display Window
-
-Wireshark provides several keyboard shortcuts to navigate efficiently through the packet list and details:
-
-| **Accelerator**        | **Description**                                                                 |
-|------------------------|---------------------------------------------------------------------------------|
-| **Tab** or **
-
-Shift+Tab** | Move between screen elements (e.g., from the toolbar to the packet list or packet detail). |
-| **↓**                   | Move to the next packet or detail item.                                          |
-| **↑**                   | Move to the previous packet or detail item.                                      |
-| **Ctrl+↓** or **F8**    | Move to the next packet, even if the packet list isn't focused.                 |
-| **Ctrl+↑** or **F7**    | Move to the previous packet, even if the packet list isn't focused.             |
-| **Ctrl+→**              | In the packet detail, open the selected tree item.                             |
-| **Ctrl+←**              | In the packet detail, close all the tree items.                                |
-| **Ctrl+.**              | Move to the next packet of the conversation (TCP, UDP, or IP).                 |
-| **Ctrl+,**              | Move to the previous packet of the conversation.                              |
-| **Return or Enter**     | In the packet detail, toggle the selected tree item.                           |
-| **Backspace**           | In the packet detail, jump to the parent node.                                |
 
 ---
 
@@ -344,7 +326,25 @@ When the **RST (Reset)** flag is set, it indicates that the TCP connection is be
 This filter captures packets that have both the SYN and ACK flags set, indicating a response from the server during the TCP 3-way handshake (SYN-ACK).
 
 ---
+## Keyboard Shortcuts - Main Display Window
 
+Wireshark provides several keyboard shortcuts to navigate efficiently through the packet list and details:
+
+| **Accelerator**        | **Description**                                                                 |
+|------------------------|---------------------------------------------------------------------------------|
+| **Tab** or **Shift+Tab** | Move between screen elements (e.g., from the toolbar to the packet list or packet detail). |
+| **↓**                   | Move to the next packet or detail item.                                          |
+| **↑**                   | Move to the previous packet or detail item.                                      |
+| **Ctrl+↓** or **F8**    | Move to the next packet, even if the packet list isn't focused.                 |
+| **Ctrl+↑** or **F7**    | Move to the previous packet, even if the packet list isn't focused.             |
+| **Ctrl+→**              | In the packet detail, open the selected tree item.                             |
+| **Ctrl+←**              | In the packet detail, close all the tree items.                                |
+| **Ctrl+.**              | Move to the next packet of the conversation (TCP, UDP, or IP).                 |
+| **Ctrl+,**              | Move to the previous packet of the conversation.                              |
+| **Return** or **Enter** | In the packet detail, toggle the selected tree item.                           |
+| **Backspace**           | In the packet detail, jump to the parent node.                                |
+
+***
 Reference: 
 https://www.stationx.net/wireshark-cheat-sheet/
 https://scadahacker.com/library/Documents/Cheat_Sheets/Networking%20-%20Wireshark%20-%20Display%20Filters%201.pdf
