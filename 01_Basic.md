@@ -34,21 +34,6 @@ In Wireshark, the packet capture output contains a variety of columns to help yo
 These columns provide basic information about each captured packet. You can customize the columns displayed in Wireshark to suit your specific needs.
 
 ---
-
-## Logical Operators
-
-Logical operators in Wireshark display filters allow you to combine multiple conditions in a filter expression. Here are the most commonly used logical operators:
-
-| **Operator**       | **Description**                          | **Example**                                                                                   | 
-|--------------------|------------------------------------------|-----------------------------------------------------------------------------------------------|
-| **and** or **&&**   | **Logical AND**                          | All the conditions should match. Example: `ip.src == 192.168.1.1 and tcp.port == 80`         |
-| **or** or **\|\|**    | **Logical OR**                           | Either all or one of the conditions should match. Example: `ip.src == 192.168.1.1 or tcp.port == 443` |
-| **xor** or **^^**   | **Logical XOR (Exclusive OR)**           | Exclusive alterations - only one of the two conditions should match, not both. Example: `ip.src == 192.168.1.1 xor ip.dst == 192.168.1.2` |
-| **not** or **!**    | **Negation**                             | Inverts the condition. Example: `not ip.addr == 192.168.1.1` (show packets not from this IP) |
-| **[n]** or **[...]**| **Substring operator**                   | Filters for specific words or text within the packet. Example: `http contains "GET"`              |
-
----
-
 ## Filtering Packets (Display Filters)
 
 | **Operator**       | **Description**                           | **Example**                                | **Explanation**                                                                          |
@@ -60,10 +45,10 @@ Logical operators in Wireshark display filters allow you to combine multiple con
 | **ge** or **>=**   | **Greater than or equal**                 | `frame.len >= 10`                          | This filter will show packets with frame lengths greater than or equal to 10 bytes.      |
 | **le** or **<=**   | **Less than or equal**                    | `frame.len <= 10`                          | This filter will show packets with frame lengths less than or equal to 10 bytes.         |
 | **matches**        | **Regular Expression Match**              | `http.host matches "example.com"`          | This filter will show packets where the `http.host` field matches a regular expression.   |
-| **contains**       | **Contains**                              | `data.data contains "example"`             | This filter will show packets that contain the word "example" in the data portion.       |
+| **contains**       | **Contains (Substring)**                  | `data.data contains "example"`             | This filter will show packets that contain the word "example" in the data portion.       |
 | **in**             | **In List**                               | `tcp.port in {80 443}`                     | This filter will show packets where the TCP port is either 80 or 443.                    |
 | **and**            | **Logical AND**                           | `ip.src == 192.168.1.1 && tcp.port == 80`  | This filter will show packets where the source IP is `192.168.1.1` and TCP port is `80`. |
-| **or**             | **Logical OR**                            | `tcp.port == 80 || udp.port == 53`         | This filter will show packets with either TCP port 80 or UDP port 53.                    |
+| **or**             | **Logical OR**                            | `tcp.port == 80 \|\| udp.port == 53`       | This filter will show packets with either TCP port 80 or UDP port 53.                    |
 | **not**            | **Logical NOT**                           | `not ip.src == 192.168.1.1`                | This filter will exclude packets with the source IP address `192.168.1.1`.               |
 | **ispresent**      | **Field Exists**                          | `http.host ispresent`                      | This filter will show packets where the `http.host` field is present (not empty).        |
 | **isnull**         | **Field is NULL**                         | `tcp.analysis.flags isnull`                | This filter will show packets where the `tcp.analysis.flags` field is NULL.              |
