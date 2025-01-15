@@ -1,9 +1,10 @@
-In this transcript, TTL (Time to Live) is discussed as a crucial field in IP packet headers for troubleshooting and network analysis. Here's a summary of the key points:
+TTL (Time to Live) is discussed as a crucial field in IP packet headers for troubleshooting and network analysis. Here's a summary of the key points:
 
 1. **What TTL Is and How It Works**:
    - TTL is a field in the IP packet header that specifies how many hops (routers) a packet can traverse before being discarded.
    - It starts with a specific value when the packet is sent from the source, which is determined by the operating system or device. Common starting values are **255**, **128**, and **64**, depending on the device (e.g., Windows typically uses 128, while infrastructure devices use 255).
-   ![image](https://github.com/user-attachments/assets/3ce06bfd-16bc-4ab4-8de0-5b6291bd1a50)
+
+![image](https://github.com/user-attachments/assets/64d1ab8d-281c-43ed-95b0-88dd1c93c4c4)
 
 2. **Decrementing of TTL**:
    - As the packet passes through each hops(router), the TTL is decremented by one.
