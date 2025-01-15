@@ -1,7 +1,5 @@
 # Wireshark Command/Cheatsheet
 
-This README provides an overview of essential Wireshark commands, filters, keyboard shortcuts, and more, helping you effectively capture, analyze, and troubleshoot network traffic.
-
 ---
 
 ### Table of Contents
