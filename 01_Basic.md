@@ -39,7 +39,7 @@ These columns provide basic information about each captured packet. You can cust
 
 Logical operators in Wireshark display filters allow you to combine multiple conditions in a filter expression. Here are the most commonly used logical operators:
 
-| **Operator**       | **Description**                          | **Example**                                                                                   |
+| **Operator**       | **Description**                          | **Example**                                                                                   | 
 |--------------------|------------------------------------------|-----------------------------------------------------------------------------------------------|
 | **and** or **&&**   | **Logical AND**                          | All the conditions should match. Example: `ip.src == 192.168.1.1 and tcp.port == 80`         |
 | **or** or **||**    | **Logical OR**                           | Either all or one of the conditions should match. Example: `ip.src == 192.168.1.1 or tcp.port == 443` |
@@ -53,66 +53,15 @@ Logical operators in Wireshark display filters allow you to combine multiple con
 
 Display filters in Wireshark are used to selectively show packets based on various conditions. Below are common filter operators with examples:
 
-| **Operator**       | **Description**                           | **Example**                                |
-|--------------------|-------------------------------------------|--------------------------------------------|
-| **eq** or **==**   | **Equal**                                 | `ip.dst == 192.168.1.1`                    |
-| **ne** or **!=**   | **Not equal**                             | `ip.dst != 192.168.1.1`                    |
-| **gt** or **>**    | **Greater than**                          | `frame.len > 10`                           |
-| **lt** or **<**    | **Less than**                             | `frame.len < 10`                           |
-| **ge** or **>=**   | **Greater than or equal**                 | `frame.len >= 10`                          |
-| **le** or **<=**   | **Less than or equal**                    | `frame.len <= 10`                          |
+| **Operator**       | **Description**                           | **Example**                                |**Description**                                                                          |
+|--------------------|-------------------------------------------|--------------------------------------------|-----------------------------------------------------------------------------------------|
+| **eq** or **==**   | **Equal**                                 | `ip.dst == 192.168.1.1`                    | This filter will show packets where the destination IP address is exactly `192.168.1.1`.|
+| **ne** or **!=**   | **Not equal**                             | `ip.dst != 192.168.1.1`                    | This filter will exclude packets where the destination IP address is 192.168.1.1.|
+| **gt** or **>**    | **Greater than**                          | `frame.len > 10`                           | This filter will show packets where the frame length is greater than 10 bytes.  |
+| **lt** or **<**    | **Less than**                             | `frame.len < 10`                           | This filter will show packets where the frame length is less than 10 bytes.|
+| **ge** or **>=**   | **Greater than or equal**                 | `frame.len >= 10`                          | This filter will show packets with frame lengths greater than or equal to 10 bytes.|
+| **le** or **<=**   | **Less than or equal**                    | `frame.len <= 10`                          | This filter will show packets with frame lengths less than or equal to 10 bytes.|
 
-### Explanation of Filtering Operators
-
-1. **Equal (`eq`, `==`)**:
-   - Filters packets that match a specific value.
-   - **Example**: 
-     ```bash
-     ip.dst == 192.168.1.1
-     ```
-     This filter will show packets where the destination IP address is exactly `192.168.1.1`.
-
-2. **Not Equal (`ne`, `!=`)**:
-   - Filters packets that do **not** match a specific value.
-   - **Example**:
-     ```bash
-     ip.dst != 192.168.1.1
-     ```
-     This filter will exclude packets where the destination IP address is `192.168.1.1`.
-
-3. **Greater Than (`gt`, `>`)**:
-   - Filters packets where the value is greater than the specified threshold.
-   - **Example**:
-     ```bash
-     frame.len > 10
-     ```
-     This filter will show packets where the frame length is greater than 10 bytes.
-
-4. **Less Than (`lt`, `<`)**:
-   - Filters packets where the value is less than the specified threshold.
-   - **Example**:
-     ```bash
-     frame.len < 10
-     ```
-     This filter will show packets where the frame length is less than 10 bytes.
-
-5. **Greater Than or Equal (`ge`, `>=`)**:
-   - Filters packets where the value is greater than or equal to the specified threshold.
-   - **Example**:
-     ```bash
-     frame.len >= 10
-     ```
-     This filter will show packets with frame lengths greater than or equal to 10 bytes.
-
-6. **Less Than or Equal (`le`, `<=`)**:
-   - Filters packets where the value is less than or equal to the specified threshold.
-   - **Example**:
-     ```bash
-     frame.len <= 10
-     ```
-     This filter will show packets with frame lengths less than or equal to 10 bytes.
-
----
 
 ## Filter Types
 
