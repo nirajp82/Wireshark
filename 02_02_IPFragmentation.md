@@ -1,5 +1,6 @@
 The key points are:
-![image](https://github.com/user-attachments/assets/42b04d53-f671-4bb8-b54a-8743f94ed70a)
+![image](https://github.com/user-attachments/assets/4867e362-6ad7-4c1e-89ab-a89fd69f67da)
+
 
 1. **Need for Fragmentation**: The maximum packet size that can be transmitted is determined by the MTU (Maximum Transmission Unit). Typically, an IP MTU is 1500 bytes on a local network, but this can vary across different parts of the network.
 
