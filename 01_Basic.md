@@ -312,6 +312,16 @@ When the **RST (Reset)** flag is set, it indicates that the TCP connection is be
 **Filter**: `tcp.flags.syn == 1 && tcp.flags.ack == 1`
 
 This filter captures packets that have both the SYN and ACK flags set, indicating a response from the server during the TCP 3-way handshake (SYN-ACK).
+---
+
+### 12. What Does the `http.request.method == "CONNECT"` Filter Capture?
+
+**Filter**: `http.request.method == "CONNECT"`
+
+**Explanation**:  
+This filter captures HTTP requests where the method is `CONNECT`, which is used by clients to instruct a proxy server to establish a **TCP tunnel** to a remote server. The `CONNECT` method is commonly used when a client wants to connect to an **HTTPS** server through an HTTP proxy. It allows encrypted traffic to be tunneled through the proxy without being decrypted.
+
+This filter identifies HTTP `CONNECT` requests, which are typically sent by a client to a proxy server to establish a secure connection (usually for HTTPS). When the client wants to reach an HTTPS site via a proxy, it sends a `CONNECT` request to the proxy server, specifying the destination server and port (usually port 443 for HTTPS). The proxy responds by opening a tunnel, allowing encrypted traffic to pass through without inspecting or modifying it. This method is not used for typical data retrieval or submission, but rather for setting up a communication channel.
 
 ---
 ## Keyboard Shortcuts - Main Display Window
