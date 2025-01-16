@@ -1,3 +1,30 @@
+## **Overview**
+Every device that communicates on an IP network (like the internet or a local area network) must have an IP address. The key difference is **how** that IP address is assigned.
+
+### **Types of IP Address Assignment:**
+1. **Dynamic IP Assignment (via DHCP)**:  
+   Most modern networks, especially in home and enterprise environments, use **DHCP (Dynamic Host Configuration Protocol)** to assign IP addresses automatically.  
+   - **How it works**: Devices **don’t have a fixed IP address** initially. Instead, they **request an IP address** when they connect to the network, and a DHCP server **dynamically assigns** an available IP address from its pool.
+   - In many cases, yes. Most devices **automatically obtain an IP address** through DHCP when they join a network. This is the most common setup today because it’s more convenient and efficient.
+   - No, devices generally do not come with a pre-configured **global** IP address. Instead, they use **private IP addresses** assigned dynamically by a DHCP server on a local network (e.g., home Wi-Fi). If devices are in a network where static IPs are required, those can be manually set by an administrator.
+   - **Use case**: This is how devices like laptops, smartphones, and tablets typically get their IP addresses on home Wi-Fi networks, office LANs, or even when you connect to the internet through your ISP.
+   - **Benefits**: This method is easy, flexible, and efficient since devices don’t need to be manually configured every time they connect to the network. It also allows IP addresses to be reused when devices disconnect or are no longer in use.
+
+2. **Static IP Assignment**:  
+   In some cases, devices may be **manually assigned a fixed IP address**.
+   - **How it works**: The **IP address is manually set** on the device, and it remains the same until it's changed by the network administrator. This means the device always uses the same IP address whenever it connects to the network.
+   - **Use case**: Devices like **servers**, **network printers**, **security cameras**, or any devices that need a **constant, unchanging IP address** often use static IPs. This ensures they are always reachable at the same address for services like web hosting, printing, or remote access.
+   - **Benefits**: Static IPs provide reliability for critical devices that other devices or users need to reach at a known address.
+   - **Issues**:  Before DHCP, IP addresses were assigned manually or statically, which had several issues:
+		1. **Manual Errors**: Mistakes, like assigning the same IP to multiple devices, could cause conflicts.
+		2. **Scalability**: Managing many IPs manually became challenging as networks grew.
+		3. **Limited Mobility**: Devices moving between networks needed reconfiguration each time they joined a new network.
+
+3. **Link-Local IP Addresses (APIPA)**:  
+   In certain situations, if a device can’t get an IP address from a DHCP server (for example, if the server is down or not reachable), it will automatically assign itself a **link-local IP address**. This is typically in the **169.254.x.x range**.
+   - **How it works**: If the device is unable to reach a DHCP server, it assigns itself a temporary address in the **169.254.x.x** range. This allows devices to communicate **only within the local network** (same subnet) but **not with devices outside** that network or the internet.
+   - **Use case**: This is a fail-safe mechanism for situations where DHCP fails, allowing basic communication between devices in the same network.
+
 ### **How DHCP Works**
 
 **DHCP** (Dynamic Host Configuration Protocol) is a network protocol used to automatically assign IP addresses and other network configuration information to devices on a network. It simplifies network management by removing the need for administrators to manually configure devices with IP addresses.
