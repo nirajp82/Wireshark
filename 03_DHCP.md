@@ -100,6 +100,40 @@ DHCP is used in almost all modern networks, especially in dynamic environments w
 
 ---
 
+The **protocol used for DHCP (Dynamic Host Configuration Protocol)** is **UDP (User Datagram Protocol)**. Here's a more detailed breakdown:
+
+### **Protocols and Ports Used in DHCP**
+
+- **DHCP operates over UDP** because it is a **connectionless** protocol, which is suitable for quick and simple communication like IP address assignment.
+  
+  - **UDP** does not establish a connection between the client and server, allowing for faster communication with less overhead than TCP.
+
+- **Ports Used by DHCP**:
+  - **Port 67**: The DHCP **server** listens on port **67** for incoming **DHCP requests** from clients.
+  - **Port 68**: The DHCP **client** listens on port **68** for responses from the DHCP server.
+
+### **Why UDP is Used for DHCP**
+- **No Need for Reliability**: DHCP messages do not require guaranteed delivery. If a message is lost, the client can simply retransmit it. This is especially important because the client doesn’t yet have an IP address when sending the initial request (DHCP Discover).
+  
+- **Broadcasting**: DHCP Discover messages are **broadcasted** to all devices on the local network since the client doesn't know the server's IP address initially. UDP is ideal for broadcasting on local networks because it doesn’t require a connection setup.
+
+- **Low Overhead**: UDP has lower protocol overhead compared to TCP, making it ideal for the relatively simple and quick task of IP address assignment.
+
+### **Flow of DHCP Messages**
+- The DHCP client sends a **DHCP Discover** message to port 67 (broadcasted at the **UDP Layer**).
+- The DHCP server replies with a **DHCP Offer** on port 68.
+- The client then sends a **DHCP Request** to the server on port 68.
+- Finally, the server sends a **DHCP Acknowledgment (ACK)** back to the client on port 68.
+
+---
+
+### Summary
+- **Protocol**: **UDP** (User Datagram Protocol).
+- **Ports**: **UDP Port 67** for the server and **UDP Port 68** for the client.
+
+This efficient and lightweight communication makes UDP the ideal choice for DHCP's simple task of dynamically assigning IP addresses.
+***********
+
 ### **Summary**
 
 - **DHCP** is a protocol used to automatically assign IP addresses and other network configuration information to devices on a network.
