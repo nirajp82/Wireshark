@@ -41,7 +41,7 @@ Here are the **main TCP flags** and their meaning:
 ---
 
 ### **5. PSH (Push)**  
-- **Purpose**: Pushes data to the receiving application without waiting for additional packets.
+- **Purpose**: Pushes data to the **receiving application without waiting for additional packets**.
 - **Description**: The **PSH flag** tells the receiving end to immediately pass the data to the application layer, rather than buffering it. This is useful for time-sensitive data that needs to be processed right away, such as interactive applications like SSH or Telnet.
 - **When used**: When a sender wants to make sure that data is pushed to the receiving application immediately.
 - **Example**: `PSH` in the flag column.
