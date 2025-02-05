@@ -70,10 +70,13 @@ This document describes some of the most useful columns in Wireshark and what th
     Indicates the amount of data the sender is willing to accept before needing an acknowledgment. This is crucial for flow control, ensuring the sender doesn't overwhelm the receiver with too much data.
 
     * **Example:** `Win=65535` (The receiver's buffer window size in bytes)
+   
+ 11. **TCP Segment Length:**
+      The Payload Size: The TCP segment length refers specifically to the size of the payload within a TCP segment. This payload is the actual application data being carried. It does not include the size of the TCP header or any lower-layer headers (like the IP header)
 
 ## **Timing and Network Characteristics**
 
-11. **Delta Time:**  
+12. **Delta Time:**  
     The time elapsed between the current packet and the **previous displayed packet**. This is invaluable for identifying delays and performance bottlenecks. *Note: Filtering or sorting can affect which packet is considered "previous."*
 
     * **Example:**  
@@ -82,23 +85,23 @@ This document describes some of the most useful columns in Wireshark and what th
 
     This is particularly useful for identifying delays between packets in a session, which can help pinpoint issues like high latency or slow processing on the sender or receiver.
 
-12. **TTL (Time-to-Live):**  
+13. **TTL (Time-to-Live):**  
     The number of hops a packet can take before being discarded. A decreasing TTL value as packets traverse the network can indicate routing problems or network loops, which can lead to delays.
 
     * **Example:** `64`, `128` (Typical TTL values).  
     Low TTL values might be worth investigating, especially if they drop unexpectedly.
 
-13. **Absolute Date and Time:**  
+14. **Absolute Date and Time:**  
     The exact date and time the packet was captured. This is useful for correlating packet captures with other logs, events, or system times for more context.
 
     * **Example:** `2024-10-27 12:00:00.123` (Exact time of capture in absolute terms).
 
-14. **Cumulative Bytes:**  
+15. **Cumulative Bytes:**  
     The total number of bytes transferred in a stream (often a TCP stream). This can be useful for tracking the volume of data transferred during a session, especially in long communications or data transfers.
 
     * **Example:** `1024`, `2048` (Total bytes transferred in a session).
 
-15. **TCP Stream Index:**  
+16. **TCP Stream Index:**  
     A unique identifier for each TCP stream, making it easy to follow a specific conversation even if packets are interleaved with other streams. This is useful when you're troubleshooting or analyzing a specific session among multiple connections.
 
     * **Example:** `Stream 0`, `Stream 1`, `Stream 2`.
