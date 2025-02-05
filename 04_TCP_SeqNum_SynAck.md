@@ -1,6 +1,6 @@
 ### **TCP Sequence Numbers, Segment Length, and ACKs: A Deep Dive**
 
-Let’s explore the intricacies of **TCP sequence numbers**, **segment length**, and **acknowledgment numbers (ACKs)** in more detail. Understanding how these concepts work together is fundamental to analyzing and troubleshooting TCP traffic.
+Let’s explore the intricacies of **TCP sequence numbers**, **segment length**, and **acknowledgment numbers (ACKs)** . Understanding how these concepts work together is fundamental to analyzing and troubleshooting TCP traffic.
 
 ---
 
